@@ -4,19 +4,25 @@ package Task_03.Commands;
  * Created by Aleksey Zaychenkov on 04.10.2019.
  */
 public abstract class Command {
-    public StringBuilder editor;
+    public StringBuilder builder;
     private String backup;
+    protected String changeString;
 
-    Command(StringBuilder editor) {
-        this.editor = editor;
+    protected Command(StringBuilder editor) {
+        this.builder = editor;
+    }
+
+    protected Command(StringBuilder editor, String changeString) {
+        this.builder = editor;
+        this.changeString = changeString;
     }
 
     void backup() {
-        backup = editor.toString();
+        backup = builder.toString();
     }
 
     public void undo() {
-        editor = new StringBuilder(backup);
+        builder = new StringBuilder(backup);
     }
 
     public abstract boolean execute();

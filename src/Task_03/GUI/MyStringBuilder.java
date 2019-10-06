@@ -1,9 +1,9 @@
 package Task_03.GUI;
 
 
+import Task_03.Commands.AppendCommand;
 import Task_03.Commands.Command;
 import Task_03.Commands.CommandHistory;
-import Task_03.Commands.CopyCommand;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -34,7 +34,7 @@ public class MyStringBuilder {
 
 
 
-            frame.setSize(450, 200);
+            frame.setSize(480, 240);
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
@@ -70,16 +70,19 @@ public class MyStringBuilder {
             add(new JLabel("Now in StringBuilder:"), gbc);
             gbc.gridy++;
            // gbc.fill = GridBagConstraints.HORIZONTAL;
-            textField = new JTextArea("Now in StringBuilder:" ,5, 10);
+            textField = new JTextArea("Now in StringBuilder:" ,5, 40);
             textField.setLineWrap(true);
             textField.setBorder(border);
+            textField.setEditable(false);
+            //textArea.setText();
+            //ProtectedDocumentFilter.install(textField);
             add(textField, gbc);
-            gbc.gridy++;
+            gbc.gridy = gbc.gridy+5;
 
 
             add(new JLabel("Users input:"), gbc);
             gbc.gridy++;
-            textField2 = new JTextArea("Users input:" ,1, 10);
+            textField2 = new JTextArea(1, 40);
             textField2.setLineWrap(true);
             textField2.setBorder(border);
             add(textField2, gbc);
@@ -112,7 +115,9 @@ public class MyStringBuilder {
             ctrlC.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    executeCommand(new CopyCommand(builder));
+                    executeCommand(new AppendCommand(builder, textField2.getText()));
+                    textField.setText(builder.toString());
+                    textField2.setText("");
                 }
             });
             /*
