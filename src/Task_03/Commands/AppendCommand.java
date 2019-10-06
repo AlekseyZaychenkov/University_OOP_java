@@ -2,7 +2,6 @@ package Task_03.Commands;
 
 
 public class AppendCommand extends Command {
-
     public AppendCommand(StringBuilder builder, String changeString) {
         super(builder);
         this.changeString = changeString;

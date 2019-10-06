@@ -1,6 +1,7 @@
 package Task_03.GUI;
 
 
+import Task_03.Commands.AppendBoolean;
 import Task_03.Commands.AppendCommand;
 import Task_03.Commands.Command;
 import Task_03.Commands.CommandHistory;
@@ -104,7 +105,8 @@ public class MyStringBuilder {
 
             JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-            JButton ctrlC = new JButton("Copy");
+            JButton ctrlC = new JButton("Append");
+            JButton appBool = new JButton("AppBool");
             /*JButton ctrlX = new JButton("Cut");
             JButton ctrlV = new JButton("Paste");
             JButton ctrlZ = new JButton("Undo");*/
@@ -116,6 +118,19 @@ public class MyStringBuilder {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     executeCommand(new AppendCommand(builder, textField2.getText()));
+                    textField.setText(builder.toString());
+                    textField2.setText("");
+                }
+            });
+
+            appBool.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if(textField2.getText().equals("true")||textField2.getText().equals("false"))
+                        executeCommand(new AppendBoolean(builder, Boolean.parseBoolean(textField2.getText())));
+                    else
+                        executeCommand(new AppendCommand(builder, "!!!thisIsNotBoolean!!!"));
+
                     textField.setText(builder.toString());
                     textField2.setText("");
                 }
@@ -143,6 +158,8 @@ public class MyStringBuilder {
 
 
             buttons.add(ctrlC);
+            buttons.add(appBool);
+
             /*buttons.add(ctrlX, gbc);
             buttons.add(ctrlV, gbc);
             buttons.add(ctrlZ, gbc);*/

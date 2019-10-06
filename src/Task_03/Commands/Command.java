@@ -12,10 +12,6 @@ public abstract class Command {
         this.builder = editor;
     }
 
-    protected Command(StringBuilder editor, String changeString) {
-        this.builder = editor;
-        this.changeString = changeString;
-    }
 
     void backup() {
         backup = builder.toString();
