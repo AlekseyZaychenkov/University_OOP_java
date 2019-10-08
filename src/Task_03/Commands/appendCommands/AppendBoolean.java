@@ -5,7 +5,7 @@ import Task_03.Commands.AbstractAppendCommand;
 /**
  * Created by Aleksey Zaychenkov on 06.10.2019.
  */
-public class AppendBoolean<Boolean> extends AbstractAppendCommand {
+public class AppendBoolean extends AbstractAppendCommand {
     Boolean changeBoolean;
     public AppendBoolean(StringBuilder builder, Boolean changeBoolean) {
         super(builder);

@@ -6,7 +6,7 @@ import Task_03.Commands.AbstractAppendCommand;
  * Created by Aleksey Zaychenkov on 07.10.2019.
  */
 
-public class AppendString<Boolean> extends AbstractAppendCommand {
+public class AppendString extends AbstractAppendCommand {
     String changeString;
     public AppendString(StringBuilder builder, String changeString) {
         super(builder);

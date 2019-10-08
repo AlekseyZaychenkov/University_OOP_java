@@ -5,6 +5,7 @@ import Task_03.Commands.Command;
 import Task_03.Commands.CommandHistory;
 import Task_03.Commands.appendCommands.AppendBoolean;
 import Task_03.Commands.appendCommands.AppendChar;
+import Task_03.Commands.appendCommands.AppendCharArray;
 import Task_03.Commands.appendCommands.AppendString;
 
 /**
@@ -19,33 +20,49 @@ public class MyStringBuilder {
     }
 
 
-        public void executeCommand(Command command) {
-            if (command.execute()!=null) {
-                history.push(command);
-            }
+    public void executeCommand(Command command) {
+        if (command.execute()!=null) {
+            history.push(builder.toString());
         }
+    }
 
-        private void undo() {
-            if (history.isEmpty()) return;
+    public void undo() {
+        if (history.isEmpty()) return;
 
-            Command command = history.pop();
-            if (command != null) {
-                command.undo();
-            }
+        String string = history.undo();
+        if (string != null) {
+            builder.delete(0, builder.length());
+            builder.append(string);
         }
+    }
+
+    public void redo() {
+        if (history.isEmpty()) return;
+
+        String string = history.redo();
+        if (string != null) {
+            builder.delete(0, builder.length());
+            builder.append(string);
+        }
+    }
 
 
-   public MyStringBuilder appendBoolean(Boolean input){
+
+    public MyStringBuilder append(Boolean input){
        executeCommand(new AppendBoolean(builder, input));
        return this;
-   }
+    }
 
-    public MyStringBuilder appendChar(char input){
+    public MyStringBuilder append(char input){
         executeCommand(new AppendChar(builder, input));
         return this;
     }
+    public MyStringBuilder append(char[] input){
+        executeCommand(new AppendCharArray(builder, input));
+        return this;
+    }
 
-    public MyStringBuilder appendString(String input){
+    public MyStringBuilder append(String input){
         executeCommand(new AppendString(builder, input));
         return this;
     }
