@@ -1,10 +1,10 @@
 package Task_03;
 
-import Task_03.GUI.MyStringBuilder;
+import Task_03.GUI.GUI;
 
 public class Main {
     public static void main(String[] args) {
-        MyStringBuilder editor = new MyStringBuilder();
-        editor.init();
+        GUI gui = new GUI();
+        gui.init();
     }
 }

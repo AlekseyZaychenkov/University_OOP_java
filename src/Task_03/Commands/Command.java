@@ -6,12 +6,10 @@ package Task_03.Commands;
 public abstract class Command {
     public StringBuilder builder;
     private String backup;
-    protected String changeString;
 
-    protected Command(StringBuilder editor) {
-        this.builder = editor;
+    protected Command(StringBuilder builder) {
+        this.builder = builder;
     }
-
 
     void backup() {
         backup = builder.toString();
@@ -21,5 +19,5 @@ public abstract class Command {
         builder = new StringBuilder(backup);
     }
 
-    public abstract boolean execute();
+    public abstract StringBuilder execute();
 }

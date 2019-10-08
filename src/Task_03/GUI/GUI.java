@@ -1,10 +1,6 @@
 package Task_03.GUI;
 
-
-import Task_03.Commands.AppendBoolean;
-import Task_03.Commands.AppendCommand;
-import Task_03.Commands.Command;
-import Task_03.Commands.CommandHistory;
+import Task_03.MyStringBuilder;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -13,48 +9,32 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by Aleksey Zaychenkov on 04.10.2019.
+ * Created by Aleksey Zaychenkov on 08.10.2019.
  */
-public class MyStringBuilder {
-        public JTextArea textField;
-        public JTextArea textField2;
-        public String clipboard;
-        private CommandHistory history = new CommandHistory();
+public class GUI {
+    public JTextArea textField;
+    public JTextArea textField2;
+    public String clipboard;
+    public MyStringBuilder myStringBuilder = new MyStringBuilder();
 
-        public void init() {
-            JFrame frame = new JFrame("Text editor");
-            JPanel contentPanel = new JPanel();
+    public void init() {
+        JFrame frame = new JFrame("Text editor");
+        JPanel contentPanel = new JPanel();
 
-            contentPanel.add(new TestPane());
+        contentPanel.add(new GUI.TestPane());
 
-            contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
-            frame.setContentPane(contentPanel);
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+        frame.setContentPane(contentPanel);
 
-            frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 
-            frame.setSize(480, 240);
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
-        }
 
-        private void executeCommand(Command command) {
-            if (command.execute()) {
-                history.push(command);
-            }
-        }
 
-        private void undo() {
-            if (history.isEmpty()) return;
-
-            Command command = history.pop();
-            if (command != null) {
-                command.undo();
-            }
-        }
-
+        frame.setSize(480, 240);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
 
 
     public class TestPane extends JPanel {
@@ -70,7 +50,7 @@ public class MyStringBuilder {
 
             add(new JLabel("Now in StringBuilder:"), gbc);
             gbc.gridy++;
-           // gbc.fill = GridBagConstraints.HORIZONTAL;
+            // gbc.fill = GridBagConstraints.HORIZONTAL;
             textField = new JTextArea("Now in StringBuilder:" ,5, 40);
             textField.setLineWrap(true);
             textField.setBorder(border);
@@ -88,7 +68,7 @@ public class MyStringBuilder {
             textField2.setBorder(border);
             add(textField2, gbc);
             gbc.gridy++;
-           // gbc.fill = GridBagConstraints.NONE;
+            // gbc.fill = GridBagConstraints.NONE;
 
             //gbc.gridwidth = 2;
             //add(new JButton("Click"), gbc);
@@ -107,18 +87,20 @@ public class MyStringBuilder {
 
             JButton ctrlC = new JButton("Append");
             JButton appBool = new JButton("AppBool");
+            JButton appChar = new JButton("AppChar");
+
             /*JButton ctrlX = new JButton("Cut");
             JButton ctrlV = new JButton("Paste");
             JButton ctrlZ = new JButton("Undo");*/
 
             // Creation of StringBuilder-target
-            StringBuilder builder = new StringBuilder();
+
 
             ctrlC.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    executeCommand(new AppendCommand(builder, textField2.getText()));
-                    textField.setText(builder.toString());
+                    myStringBuilder.appendString(textField2.getText());
+                    textField.setText(myStringBuilder.toString());
                     textField2.setText("");
                 }
             });
@@ -127,11 +109,25 @@ public class MyStringBuilder {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if(textField2.getText().equals("true")||textField2.getText().equals("false"))
-                        executeCommand(new AppendBoolean(builder, Boolean.parseBoolean(textField2.getText())));
+                        myStringBuilder.appendBoolean(Boolean.parseBoolean(textField2.getText()));
                     else
-                        executeCommand(new AppendCommand(builder, "!!!thisIsNotBoolean!!!"));
+                        myStringBuilder.appendString("!!!thisIsNotBoolean!!!");
 
-                    textField.setText(builder.toString());
+                    textField.setText(myStringBuilder.toString());
+                    textField2.setText("");
+                }
+            });
+
+            appChar.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                    if((textField2.getText().toString().length() == 1)&&(Character.isLetter(textField2.getText().toString().charAt(0))))
+                        myStringBuilder.appendChar(textField2.getText().toString().charAt(0));
+                    else
+                        myStringBuilder.appendString("!!!thisIsNotChar!!!");
+
+                    textField.setText(myStringBuilder.toString());
                     textField2.setText("");
                 }
             });
@@ -159,7 +155,7 @@ public class MyStringBuilder {
 
             buttons.add(ctrlC);
             buttons.add(appBool);
-
+            buttons.add(appChar);
             /*buttons.add(ctrlX, gbc);
             buttons.add(ctrlV, gbc);
             buttons.add(ctrlZ, gbc);*/
@@ -174,6 +170,4 @@ public class MyStringBuilder {
 
 
 
-
-    }
-
+}
