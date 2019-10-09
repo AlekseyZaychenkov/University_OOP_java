@@ -26,6 +26,7 @@ public class CommandHistory {
                 return iterator.previous();
             else
                 return "";
+
         } finally {
             previousWasUndo = true;
             previousWasRedo = false;
@@ -40,9 +41,9 @@ public class CommandHistory {
             if (previousWasUndo)
                 iterator.next();
 
-            if (iterator.hasNext())
+            if (iterator.hasNext()) {
                 return iterator.next();
-            else
+            }else
                 return history.size() == 0 ? "" : history.get(history.size()-1);
 
         } finally {
