@@ -3,11 +3,11 @@ package Task_03.Commands.appendCommands;
 import Task_03.Commands.AbstractAppendCommand;
 
 /**
- * Created by Aleksey Zaychenkov on 07.10.2019.
+ * Created by Aleksey Zaychenkov on 09.10.2019.
  */
-public class AppendChar extends AbstractAppendCommand {
-    char change;
-    public AppendChar(StringBuilder builder, char change) {
+public class AppendDouble extends AbstractAppendCommand {
+    double change;
+    public AppendDouble(StringBuilder builder, double change) {
         super(builder);
         this.change = change;
     }

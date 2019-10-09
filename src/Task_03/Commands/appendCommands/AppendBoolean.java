@@ -6,14 +6,14 @@ import Task_03.Commands.AbstractAppendCommand;
  * Created by Aleksey Zaychenkov on 06.10.2019.
  */
 public class AppendBoolean extends AbstractAppendCommand {
-    Boolean changeBoolean;
-    public AppendBoolean(StringBuilder builder, Boolean changeBoolean) {
+    Boolean change;
+    public AppendBoolean(StringBuilder builder, Boolean change) {
         super(builder);
-        this.changeBoolean = changeBoolean;
+        this.change = change;
     }
 
     @Override
     public StringBuilder execute() {
-        return builder.append(changeBoolean);
+        return builder.append(change);
     }
 }

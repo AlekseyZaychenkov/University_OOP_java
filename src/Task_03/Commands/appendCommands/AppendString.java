@@ -7,14 +7,14 @@ import Task_03.Commands.AbstractAppendCommand;
  */
 
 public class AppendString extends AbstractAppendCommand {
-    String changeString;
-    public AppendString(StringBuilder builder, String changeString) {
+    String change;
+    public AppendString(StringBuilder builder, String change) {
         super(builder);
-        this.changeString = changeString;
+        this.change = change;
     }
 
     @Override
     public StringBuilder execute() {
-        return builder.append(changeString);
+        return builder.append(change);
     }
 }
