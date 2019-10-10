@@ -3,13 +3,13 @@ package Task_03.Commands.mainCommandTypes;
 /**
  * Created by Aleksey Zaychenkov on 10.10.2019.
  */
-public class CommandSubSequence {
+public class SubSequence {
     public StringBuilder builder;
     private String backup;
     protected int input1;
     protected int input2;
 
-    protected CommandSubSequence(StringBuilder builder, int input1,int input2) {
+    public SubSequence(StringBuilder builder, int input1, int input2) {
         this.builder = builder;
         this.input1 = input1;
         this.input2 = input2;

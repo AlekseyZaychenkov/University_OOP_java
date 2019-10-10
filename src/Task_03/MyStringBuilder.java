@@ -1,10 +1,20 @@
 package Task_03;
 
 
-import Task_03.Commands.returnIntCommands.CapacityAbstractCommand;
-import Task_03.Commands.mainCommandTypes.Command;
 import Task_03.Commands.CommandHistory;
 import Task_03.Commands.appendCommands.*;
+import Task_03.Commands.insertCommands.*;
+import Task_03.Commands.mainCommandTypes.CharAt;
+import Task_03.Commands.mainCommandTypes.Command;
+import Task_03.Commands.mainCommandTypes.SubSequence;
+import Task_03.Commands.othersReturnStringBuilderCommands.Delete;
+import Task_03.Commands.othersReturnStringBuilderCommands.DeleteCharAt;
+import Task_03.Commands.othersReturnStringBuilderCommands.Replace;
+import Task_03.Commands.othersReturnStringBuilderCommands.Reverse;
+import Task_03.Commands.returnIntCommands.*;
+import Task_03.Commands.returnStringCommands.SubstringInt;
+import Task_03.Commands.returnStringCommands.SubstringIntInt;
+import Task_03.Commands.returnVoidCommands.*;
 
 /**
  * Created by Aleksey Zaychenkov on 04.10.2019.
@@ -43,8 +53,6 @@ public class MyStringBuilder {
             builder.append(string);
         }
     }
-
-
 
     public MyStringBuilder append(Boolean input){
        executeCommand(new AppendBoolean(builder, input));
@@ -104,17 +112,151 @@ public class MyStringBuilder {
         return this;
     }
 
-
-
-
-    public int capacityCommand(){
-        return new CapacityAbstractCommand(builder).executeReturnInt();
+    public int capacity(){
+        return new CapacityAbstractCommand(builder).execute();
+    }
+    public char charAt(int index){
+        return new CharAt(builder, index).execute();
+    }
+    public int codePointAt(int index) {
+        return new CodePointAt(builder, index).execute();
     }
 
+    public int codePointBefore(int index) {
+        return new CodePointBefore(builder, index).execute();
+    }
+
+    public int codePointCount(int beginIndex, int endIndex){
+        return new CodePointCount(builder, beginIndex, endIndex).execute();
+    }
+
+    public StringBuilder delete(int start, int end){
+        return new Delete(builder, start, end).execute();
+    }
+
+    public StringBuilder deleteCharAt(int index){
+        return new DeleteCharAt(builder, index).execute();
+    }
+
+    public void	ensureCapacity(int minimumCapacity){
+        new EnsureCapacity(builder, minimumCapacity).execute();
+    }
+
+    public void	getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin){
+        new GetChars(builder, srcBegin, srcEnd, dst, dstBegin).execute();
+    }
+
+    public int indexOf(String str){
+        return new IndexOf(builder, str).execute();
+    }
+
+    public int indexOf(String str, int fromIndex){
+        return new IndexOf_02(builder, str, fromIndex).execute();
+    }
+
+    public StringBuilder insert(int offset, boolean b){
+        return new InsertIntBoolean(builder, offset, b).execute();
+    }
+
+    public StringBuilder insert(int offset, char c){
+        return new InsertIntChar(builder, offset, c).execute();
+    }
+
+    public StringBuilder insert(int offset, char[] str){
+        return new InsertIntCharArray(builder, offset, str).execute();
+    }
+
+    public StringBuilder insert(int index, char[] str, int offset, int len){
+        return new InsertIntCharArrayIntInt(builder, index, str, offset, len).execute();
+    }
+
+    public StringBuilder insert(int dstOffset, CharSequence s){
+        return new InsertIntCharSequence(builder, dstOffset, s).execute();
+    }
+
+    public StringBuilder insert(int dstOffset, CharSequence s, int start, int end){
+        return new InsertIntCharSequenceIntInt(builder, dstOffset, s, start, end).execute();
+    }
+
+    public StringBuilder insert(int offset, double d){
+        return new InsertIntDouble(builder, offset, d).execute();
+    }
+
+    public StringBuilder insert(int offset, float f){
+        return new InsertIntFloat(builder, offset, f).execute();
+    }
+
+    public StringBuilder insert(int offset, int i){
+        return new InsertIntInt(builder, offset, i).execute();
+    }
+
+    public StringBuilder insert(int offset, long l){
+        return new InsertIntLong(builder, offset, l).execute();
+    }
+
+    public StringBuilder insert(int offset, Object obj){
+        return new InsertIntObject(builder, offset, obj).execute();
+    }
+
+    public StringBuilder insert(int offset, String str){
+        return new InsertIntString(builder, offset, str).execute();
+    }
+
+    public int lastIndexOf(String str){
+        return new LastIndexOfString(builder, str).execute();
+    }
+
+    public int lastIndexOf(String str, int fromIndex){
+        return new LastIndexOfStringInt(builder, str, fromIndex).execute();
+    }
+
+    public int length(){
+        return new Length(builder).execute();
+    }
+
+    public int offsetByCodePoints(int index, int codePointOffset){
+        return new OffsetByCodePoints(builder, index, codePointOffset).execute();
+    }
+
+    public StringBuilder replace(int start, int end, String str){
+        return new Replace(builder, start, end, str).execute();
+    }
+
+    public StringBuilder reverse(){
+        return new Reverse(builder).execute();
+    }
+
+    public void	setCharAt(int index, char ch){
+        new SetCharAt(builder, index, ch).execute();
+    }
+
+    public void	setLength(int newLength){
+        new SetLength(builder, newLength).execute();
+    }
+
+    public CharSequence	subSequence(int start, int end){
+        return new SubSequence(builder, start, end).execute();
+    }
+
+    public String substring(int start){
+        return new SubstringInt(builder, start).execute();
+    }
+
+    public String substring(int start, int end){
+        return new SubstringIntInt(builder, start, end).execute();
+    }
 
     @Override
     public String toString() {
         return builder.toString();
     }
+
+    public void	trimToSize(){
+        new TrimToSize(builder).execute();
+    }
+
+
+
+
 }
 

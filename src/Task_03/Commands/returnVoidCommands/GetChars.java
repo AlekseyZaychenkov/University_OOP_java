@@ -9,7 +9,10 @@ public class GetChars extends AbstractReturnVoidCommand {
 
     public GetChars(StringBuilder builder, int input1, int input2, char[] input1ChArr, int input4){
         super(builder);
-        this.input1   = input1;
+        this.input1      = input1;
+        this.input2      = input2;
+        this.input1ChArr = input1ChArr;
+        this.input4      = input4;
     }
 
     public void execute() {

@@ -5,9 +5,9 @@ import Task_03.Commands.mainCommandTypes.AbstractReturnStringCommand;
 /**
  * Created by Aleksey Zaychenkov on 10.10.2019.
  */
-public class CommandReturnSubstring extends AbstractReturnStringCommand {
+public class SubstringInt extends AbstractReturnStringCommand {
 
-    protected CommandReturnSubstring(StringBuilder builder, int input1) {
+    public SubstringInt(StringBuilder builder, int input1) {
         super(builder);
         this.input1 = input1;
     }
