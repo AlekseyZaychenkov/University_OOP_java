@@ -13,9 +13,9 @@ import java.util.*;
 
 public class Main {
     static final String ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    static int STEP_SIZE = 3;
-    static int INITIAL_STRING_SIZE = 100;
-    static boolean ALLOWS_REPEATS = true;
+    static final int STEP_SIZE = 3;
+    static final int INITIAL_STRING_SIZE = 100;
+    static final boolean ALLOWS_REPEATS = true;
 
     public static void main(String[] args) {
         String initialString = getRandomString(INITIAL_STRING_SIZE);
