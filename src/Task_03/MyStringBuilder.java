@@ -1,7 +1,8 @@
 package Task_03;
 
 
-import Task_03.Commands.Command;
+import Task_03.Commands.returnIntCommands.CapacityAbstractCommand;
+import Task_03.Commands.mainCommandTypes.Command;
 import Task_03.Commands.CommandHistory;
 import Task_03.Commands.appendCommands.*;
 
@@ -18,7 +19,7 @@ public class MyStringBuilder {
 
 
     public void executeCommand(Command command) {
-        if (command.execute()!=null) {
+        if (command.execute() != null) {
             history.push(builder.toString());
         }
     }
@@ -90,6 +91,10 @@ public class MyStringBuilder {
         executeCommand(new AppendObject(builder, obj));
         return this;
     }
+    public MyStringBuilder append(String input){
+        executeCommand(new AppendString(builder, input));
+        return this;
+    }
     public MyStringBuilder append(StringBuffer sb){
         executeCommand(new AppendObject(builder, sb));
         return this;
@@ -101,9 +106,9 @@ public class MyStringBuilder {
 
 
 
-    public MyStringBuilder append(String input){
-        executeCommand(new AppendString(builder, input));
-        return this;
+
+    public int capacityCommand(){
+        return new CapacityAbstractCommand(builder).executeReturnInt();
     }
 
 

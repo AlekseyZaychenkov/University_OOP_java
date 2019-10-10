@@ -1,6 +1,6 @@
 package Task_03.Commands.appendCommands;
 
-import Task_03.Commands.AbstractAppendCommand;
+import Task_03.Commands.mainCommandTypes.AbstractAppendCommand;
 
 /**
  * Created by Aleksey Zaychenkov on 06.10.2019.
