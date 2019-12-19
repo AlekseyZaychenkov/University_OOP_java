@@ -1,7 +1,5 @@
 package Task_02.GUI;
 
-import Task_01.GUI.GUI_Task_01;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -23,11 +21,11 @@ public class TextFieldsPanel extends JPanel {
         add(new JLabel("Handlers window:"), gbc);
 
         gbc.gridy = 4;
-        GUI_Task_01.setTextField(new JTextArea( 20, 40));
-        GUI_Task_01.getTextField().setLineWrap(true);
-        GUI_Task_01.getTextField().setBorder(border);
+        GUI_Task_02.setTextField(new JTextArea( 20, 20));
+        GUI_Task_02.getTextField().setLineWrap(true);
+        GUI_Task_02.getTextField().setBorder(border);
 
-        JScrollPane scrollPane = new JScrollPane(GUI_Task_01.getTextField());
+        JScrollPane scrollPane = new JScrollPane(GUI_Task_02.getTextField());
 
         add(scrollPane, gbc);
     }
