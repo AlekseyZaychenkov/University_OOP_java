@@ -7,8 +7,8 @@ import Task_05.GUI.GUI_Task_05;
  */
 public class Main {
     public static void main(String[] args) {
-        GUI_Task_05 gui_Task_04 = new GUI_Task_05();
-        gui_Task_04.init();
+        GUI_Task_05 gui_Task_05 = new GUI_Task_05();
+        gui_Task_05.init();
     }
 }
 
