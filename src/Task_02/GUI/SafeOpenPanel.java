@@ -1,19 +1,21 @@
-package Task_01.GUI;
+package Task_02.GUI;
 
-import Task_06.TransactionHandler;
+import Task_05.GUI.GUI_Task_05;
+import Task_05.PropertiesOpener;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.Properties;
 
 /**
  * Created by Aleksey Zaychenkov on 13.12.2019.
  */
-public class RunPanel extends JPanel {
+public class SafeOpenPanel extends JPanel {
 
-    public RunPanel() {
+    public SafeOpenPanel() {
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
@@ -35,16 +37,22 @@ public class RunPanel extends JPanel {
         openButt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFileChooser fileopen = new JFileChooser("src/Task_06/resources/");
-                int ret = fileopen.showDialog(null, "Handle file of transactions");
+                JFileChooser fileopen = new JFileChooser("src/Task_05/resources/about.properties");
+                int ret = fileopen.showDialog(null, "Open file");
 
-                if (JOptionPane.showConfirmDialog(null, "Open new file?", "Current  progress will be lost!",  JOptionPane.OK_CANCEL_OPTION) == 0) {
+                if (JOptionPane.showConfirmDialog(null, "Open new file?", "Current progress will be lost!",  JOptionPane.OK_CANCEL_OPTION) == 0) {
                     if (ret == JFileChooser.APPROVE_OPTION) {
                         File file = fileopen.getSelectedFile();
                         label.setText("Current file: " + file.getName());
 
                         try {
-                            TransactionHandler.runHandling(file);
+                            Properties propertiesMap = PropertiesOpener.openProperties(file.getPath());
+                            //if (propertiesMap instanceof Map)
+                            //    GUI_Task_05.myStringBuilder.append("Properties extends from Hashtable");
+
+                            for (Object key : propertiesMap.keySet())
+                                GUI_Task_05.myStringBuilder.append(key + " = " +  propertiesMap.get(key)+'\n');
+
                         } catch (IllegalArgumentException iae){
                             System.out.println(iae);
                             JOptionPane.showMessageDialog(new JFrame(), "Unknown file format!", "Warning",
@@ -52,7 +60,7 @@ public class RunPanel extends JPanel {
                         }
                     }
                     //System.out.println("textField: " + GUI_Task_04.myStringBuilder.toString());
-                    GUI_Task_01.textField.setText(GUI_Task_01.myStringBuffer.toString());
+                    GUI_Task_05.textField.setText(GUI_Task_05.myStringBuilder.toString());
                 }
             }
         });

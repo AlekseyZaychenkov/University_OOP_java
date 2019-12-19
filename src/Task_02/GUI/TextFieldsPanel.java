@@ -1,4 +1,6 @@
-package Task_01.GUI;
+package Task_02.GUI;
+
+import Task_01.GUI.GUI_Task_01;
 
 import javax.swing.*;
 import javax.swing.border.Border;

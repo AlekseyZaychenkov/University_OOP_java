@@ -1,22 +1,22 @@
-package Task_01.GUI;
+package Task_02.GUI;
 
 import javax.swing.*;
 
 /**
  * Created by Aleksey Zaychenkov on 08.10.2019.
  */
-public class GUI_Task_01 {
+public class GUI_Task_02 {
     private static JTextArea textField;
     private static StringBuilder myStringBuilder = new StringBuilder();
     private static TextFieldsPanel textFieldsPanel = new TextFieldsPanel();
-    private static ControlPanel safeOpenPanel = new ControlPanel();
+    private static SafeOpenPanel safeOpenPanel = new SafeOpenPanel();
 
     public static JTextArea getTextField() {
         return textField;
     }
 
     public static void setTextField(JTextArea textField) {
-        GUI_Task_01.textField = textField;
+        GUI_Task_02.textField = textField;
     }
 
     public static StringBuilder getMyStringBuilder() {
@@ -24,7 +24,7 @@ public class GUI_Task_01 {
     }
 
     public static void setMyStringBuilder(StringBuilder myStringBuilder) {
-        GUI_Task_01.myStringBuilder = myStringBuilder;
+        GUI_Task_02.myStringBuilder = myStringBuilder;
     }
 
     public static TextFieldsPanel getTextFieldsPanel() {
@@ -32,15 +32,15 @@ public class GUI_Task_01 {
     }
 
     public static void setTextFieldsPanel(TextFieldsPanel textFieldsPanel) {
-        GUI_Task_01.textFieldsPanel = textFieldsPanel;
+        GUI_Task_02.textFieldsPanel = textFieldsPanel;
     }
 
-    public static ControlPanel getSafeOpenPanel() {
+    public static SafeOpenPanel getSafeOpenPanel() {
         return safeOpenPanel;
     }
 
-    public static void setSafeOpenPanel(ControlPanel safeOpenPanel) {
-        GUI_Task_01.safeOpenPanel = safeOpenPanel;
+    public static void setSafeOpenPanel(SafeOpenPanel safeOpenPanel) {
+        GUI_Task_02.safeOpenPanel = safeOpenPanel;
     }
 
 

@@ -1,12 +1,11 @@
+package Task_02;
+
 import Task_02.Animals.Animal;
 import Task_02.Animals.Carnivore;
 import Task_02.Animals.Herbivorous;
 import Task_02.Animals.Omnivores;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -41,8 +40,6 @@ public class Main {
         }
 
 
-
-
         animals.clear();
 
 
@@ -59,13 +56,14 @@ public class Main {
             while (true){
                 //while ((a = (Animal)ois.readObject()) != null){
                 a = (Animal)ois.readObject();
-                System.out.println("Readed    name= " + a.getName() + " id=" + a.getId() + " needFood=" + a.getNeedFood());
+                System.out.println("Read name= " + a.getName() + " id=" + a.getId() + " needFood=" + a.getNeedFood());
                 animals.add(a);
             }
 
-        }
-        catch(Exception ex){
-            System.out.println("Р”РѕС€Р»Рё РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р°: "+ex);
+        } catch(EOFException EOFEex){
+            System.out.println("File was read successfully: "+EOFEex);
+        } catch(Exception ex){
+            System.out.println("Unknown exception was happened: "+ex);
         }
 
 
