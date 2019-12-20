@@ -1,0 +1,8 @@
+
+public class Main {
+    public static void main(String[] args) {
+        GUI_Task_01 gui_Task_01 = new GUI_Task_01();
+        gui_Task_01.init();
+    }
+
+}
