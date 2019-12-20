@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by Aleksey Zaychenkov on 13.12.2019.
  */
+ 
 public class ControlPanel extends JPanel {
 
     private int lettersInString = 75;
@@ -21,76 +22,81 @@ public class ControlPanel extends JPanel {
         GridBagConstraints gbc = new GridBagConstraints();
 
 
-
-        JButton runButt = new JButton("Run handler");
+        JButton task01Butt = new JButton("Task 01");
+        JButton task02Butt = new JButton("Task 02");
+        JButton task03Butt = new JButton("Task 03");
+        JButton task04Butt = new JButton("Task 04");
+        JButton task05Butt = new JButton("Task 05");
+        JButton task06Butt = new JButton("Task 06");
 
         gbc.weightx = 0.5;
         gbc.fill = GridBagConstraints.BOTH;
         gbc.insets = new Insets(0, 20, 0, 20);
 
-        runButt.addActionListener(new ActionListener() {
+        task01Butt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GUI_Task_01.getMyStringBuilder().append("Letters in string: " + lettersInString + "\n");
-                GUI_Task_01.getMyStringBuilder().append("Step size: " + stepSize+ "\n"+ "\n");
-
-
-                StringHandler.run(lettersInString, stepSize);
-                GUI_Task_01.getTextField().setText(GUI_Task_01.getMyStringBuilder().toString());
+                GUI_Task_01 gui_Task_01 = new GUI_Task_01();
+                gui_Task_01.init();
             }
         });
 
 
-        // create a slider
-        JSlider stringSlider = new JSlider(0, 150, lettersInString);
-        stringSlider.setBorder(BorderFactory.createTitledBorder("Letters in string (5 is minimum): "));
 
-        // paint the ticks and tarcks
-        stringSlider.setPaintTrack(true);
-        stringSlider.setPaintTicks(true);
-        stringSlider.setPaintLabels(true);
-
-
-        // set spacing
-        stringSlider.setMajorTickSpacing(50);
-        stringSlider.setMinorTickSpacing(10);
-
-        stringSlider.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-            if(((JSlider)e.getSource()).getValue()<5)
-                lettersInString = 5;
-            else
-                lettersInString = ((JSlider)e.getSource()).getValue();
+        task02Butt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GUI_Task_02 gui_Task_02 = new GUI_Task_02();
+                gui_Task_02.init();
             }
         });
-
-
-        // create a slider
-        JSlider stepSlider = new JSlider(0, 10, stepSize);
-        stepSlider.setBorder(BorderFactory.createTitledBorder("Step size (2 is minimum): "));
-
-        // paint the ticks and tarcks
-        stepSlider.setPaintTrack(true);
-        stepSlider.setPaintTicks(true);
-        stepSlider.setPaintLabels(true);
-
-
-        // set spacing
-        stepSlider.setMajorTickSpacing(5);
-        stepSlider.setMinorTickSpacing(2);
-
-        stepSlider.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-                if(((JSlider)e.getSource()).getValue()<2)
-                    stepSize = 2;
-                else
-                    stepSize = ((JSlider)e.getSource()).getValue();
+        
+        
+        task03Butt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GUI_Task_03 gui_Task_01 = new GUI_Task_03();
+                gui_Task_03.init();
             }
         });
+        
+        
+        task04Butt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GUI_Task_04 gui_Task_04 = new GUI_Task_04();
+                gui_Task_04.init();
+            }
+        });
+        
+        
+        task05Butt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GUI_Task_05 gui_Task_01 = new GUI_Task_05();
+                gui_Task_05.init();
+            }
+        });
+        
+        
+        task06Butt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GUI_Task_06 gui_Task_06 = new GUI_Task_06();
+                gui_Task_06.init();
+            }
+        });
+        
+        
 
-        // add sliders and button to panel
-        add(stringSlider, gbc);
-        add(stepSlider, gbc);
-        add(runButt, gbc);
+
+        // add button to panel
+
+        add(runtask01Butt, gbc);
+        add(runtask02Butt, gbc);
+        add(runtask03Butt, gbc);
+        add(runtask04Butt, gbc);
+        add(runtask05Butt, gbc);
+        add(runtask06Butt, gbc);
     }
 }
