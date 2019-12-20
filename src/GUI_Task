@@ -1,0 +1,56 @@
+public class GUI_Task {
+    private static JTextArea textField;
+    private static StringBuilder myStringBuilder = new StringBuilder();
+    private static TextFieldsPanel textFieldsPanel = new TextFieldsPanel();
+    private static ControlPanel safeOpenPanel = new ControlPanel();
+
+    public static JTextArea getTextField() {
+        return textField;
+    }
+
+    public static void setTextField(JTextArea textField) {
+        GUI_Task.textField = textField;
+    }
+
+    public static StringBuilder getMyStringBuilder() {
+        return myStringBuilder;
+    }
+
+    public static void setMyStringBuilder(StringBuilder myStringBuilder) {
+        GUI_Task.myStringBuilder = myStringBuilder;
+    }
+
+    public static TextFieldsPanel getTextFieldsPanel() {
+        return textFieldsPanel;
+    }
+
+    public static void setTextFieldsPanel(TextFieldsPanel textFieldsPanel) {
+        GUI_Task.textFieldsPanel = textFieldsPanel;
+    }
+
+    public static ControlPanel getSafeOpenPanel() {
+        return safeOpenPanel;
+    }
+
+    public static void setSafeOpenPanel(ControlPanel safeOpenPanel) {
+        GUI_Task_01.safeOpenPanel = safeOpenPanel;
+    }
+
+
+
+    public void init() {
+        JFrame frame = new JFrame("Text editor");
+        JPanel contentPanel = new JPanel();
+
+        contentPanel.add(textFieldsPanel);
+        contentPanel.add(safeOpenPanel);
+
+
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+        frame.setContentPane(contentPanel);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setSize(1000, 480);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+}
