@@ -1,4 +1,4 @@
-package Normal_spreading;
+package Normal_distribution;
 
 /**
  * Created by Aleksey Zaychenkov on 20.12.2019.
