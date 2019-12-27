@@ -37,7 +37,7 @@ public class MyBinomialDistribution {
         double sum = 0, sum2 = 0, mx, dx;
 
         for (int i = 0; i < arr.length; i++) {
-            if (binomialProbability(n, k, pSuccess) <= pSuccess)
+            if (binomialProbability(n, k, pSuccess) >= pSuccess)
                 sum++;
         }
 

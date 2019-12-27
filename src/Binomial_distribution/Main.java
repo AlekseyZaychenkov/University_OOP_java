@@ -5,7 +5,7 @@ package Binomial_distribution;
  */
 public class Main {
     public static void main(String[] args) {
-        long[] array = new long[1000];
+        long[] array = new long[100];
         for (int i = 0; i < array.length; i++) {
             array[i] =  MyBinomialDistribution.getBinomialRandom(3, 15, 0.7);
             System.out.println("array["+i+"]: "+ array[i]);
